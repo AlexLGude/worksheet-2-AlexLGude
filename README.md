@@ -115,7 +115,7 @@ var s = Sphere
 }
 
 /* --- Fill in the next frame position computation here --- */
-s.position = 
+s.position = multiplyScalar(velocity, dt) + s.position;
 ```
 
 
@@ -127,7 +127,9 @@ In this assignment, you will need to test intersections between spheres and othe
 ```typescript
 function sphereIntersection(s1: Sphere, s2: Sphere) : boolean
 {
-    /* --- Fill in your sphere intersection code here --- */
+   var vectorBetween = subtractPoints(s1.position, s2.position);
+    var distanceBetween = vectorBetween.length();
+    return distanceBetween < (s1.radius+ s2.radius);
 }
 ```
 
@@ -153,10 +155,10 @@ var s3 = Sphere
 };
 
 print(sphereIntersection(s1, s2));
-/* --- Fill in expected output (true or false) --- */
+false
 
 print(sphereIntersection(s1, s3));
-/* --- Fill in expected output (true or false) --- */
+true
 ```
 
 
